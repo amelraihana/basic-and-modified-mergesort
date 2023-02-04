@@ -65,8 +65,3 @@ pairs of subarrays
  end for
  end for
  end procedure
- 
- 
- 
- 
- 
