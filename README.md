@@ -25,10 +25,7 @@ The approach described above is implemented as follows:
 // C++ program for Merge Sort
 #include <iostream>
 using namespace std;
- 
-// merges two subarrays of array[].
-// first subarray is arr[begin..mid]
-// second subarray is arr[mid+1..end]
+
 void merge(int array[], int const left, int const mid,
            int const right)
 {
@@ -88,13 +85,10 @@ void merge(int array[], int const left, int const mid,
     delete[] rightArray;
 }
  
-// begin is for left index and end is
-// right index of the sub-array
-// of arr to be sorted */
 void mergeSort(int array[], int const begin, int const end)
 {
     if (begin >= end)
-        return; // Returns recursively
+        return; 
  
     auto mid = begin + (end - begin) / 2;
     mergeSort(array, begin, mid);
