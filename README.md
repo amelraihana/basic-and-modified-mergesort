@@ -26,20 +26,20 @@ The approach described above is implemented as follows:
 #include <iostream>
 using namespace std;
  
-// Merges two subarrays of array[].
-// First subarray is arr[begin..mid]
-// Second subarray is arr[mid+1..end]
+// merges two subarrays of array[].
+// first subarray is arr[begin..mid]
+// second subarray is arr[mid+1..end]
 void merge(int array[], int const left, int const mid,
            int const right)
 {
     auto const subArrayOne = mid - left + 1;
     auto const subArrayTwo = right - mid;
  
-    // Create temp arrays
+    // create temp arrays
     auto *leftArray = new int[subArrayOne],
          *rightArray = new int[subArrayTwo];
  
-    // Copy data to temp arrays leftArray[] and rightArray[]
+    // copy data to temp arrays leftArray[] and rightArray[]
     for (auto i = 0; i < subArrayOne; i++)
         leftArray[i] = array[left + i];
     for (auto j = 0; j < subArrayTwo; j++)
@@ -52,7 +52,7 @@ void merge(int array[], int const left, int const mid,
     int indexOfMergedArray
         = left; // Initial index of merged array
  
-    // Merge the temp arrays back into array[left..right]
+    // merge the temp arrays back into array[left..right]
     while (indexOfSubArrayOne < subArrayOne
            && indexOfSubArrayTwo < subArrayTwo) {
         if (leftArray[indexOfSubArrayOne]
@@ -68,7 +68,7 @@ void merge(int array[], int const left, int const mid,
         }
         indexOfMergedArray++;
     }
-    // Copy the remaining elements of
+    // copy the remaining elements of
     // left[], if there are any
     while (indexOfSubArrayOne < subArrayOne) {
         array[indexOfMergedArray]
@@ -76,7 +76,7 @@ void merge(int array[], int const left, int const mid,
         indexOfSubArrayOne++;
         indexOfMergedArray++;
     }
-    // Copy the remaining elements of
+    // copy the remaining elements of
     // right[], if there are any
     while (indexOfSubArrayTwo < subArrayTwo) {
         array[indexOfMergedArray]
@@ -102,15 +102,13 @@ void mergeSort(int array[], int const begin, int const end)
     merge(array, begin, mid, end);
 }
  
-// UTILITY FUNCTIONS
-// Function to print an array
+// function to print an array
 void printArray(int A[], int size)
 {
     for (auto i = 0; i < size; i++)
         cout << A[i] << " ";
 }
- 
-// Driver code
+
 int main()
 {
     int arr[] = { 13, 12, 14, 4, 7, 8 };
