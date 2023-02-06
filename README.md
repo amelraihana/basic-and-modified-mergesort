@@ -23,9 +23,12 @@ step 4: Stop
 The approach described above is implemented as follows:
 
 // C++ program for Merge Sort
-
 #include <iostream>
 using namespace std;
+ 
+// Merges two subarrays of array[].
+// First subarray is arr[begin..mid]
+// Second subarray is arr[mid+1..end]
 void merge(int array[], int const left, int const mid,
            int const right)
 {
@@ -48,8 +51,9 @@ void merge(int array[], int const left, int const mid,
         = 0; // Initial index of second sub-array
     int indexOfMergedArray
         = left; // Initial index of merged array
-
-    while (indexOfSubArrayOne < subArrayOne 
+ 
+    // Merge the temp arrays back into array[left..right]
+    while (indexOfSubArrayOne < subArrayOne
            && indexOfSubArrayTwo < subArrayTwo) {
         if (leftArray[indexOfSubArrayOne]
             <= rightArray[indexOfSubArrayTwo]) {
@@ -84,6 +88,9 @@ void merge(int array[], int const left, int const mid,
     delete[] rightArray;
 }
  
+// begin is for left index and end is
+// right index of the sub-array
+// of arr to be sorted */
 void mergeSort(int array[], int const begin, int const end)
 {
     if (begin >= end)
@@ -95,15 +102,18 @@ void mergeSort(int array[], int const begin, int const end)
     merge(array, begin, mid, end);
 }
  
+// UTILITY FUNCTIONS
+// Function to print an array
 void printArray(int A[], int size)
 {
     for (auto i = 0; i < size; i++)
         cout << A[i] << " ";
 }
-                        
+ 
+// Driver code
 int main()
 {
-    int arr[] = { 13, 12, 14, 6, 7, 8 };
+    int arr[] = { 13, 12, 14, 4, 7, 8 };
     auto arr_size = sizeof(arr) / sizeof(arr[0]);
  
     cout << "Given array is \n";
